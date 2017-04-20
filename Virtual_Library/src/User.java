@@ -1,15 +1,14 @@
-
-public class User {
-	
+public class User 
+{
 	private String email;
 	private String username;
 	private String password;
 	
 	public User(String email, String username, String password)
 	{
-		email = this.email;
-		username = this.username;
-		password = this.password;
+		this.email = email;
+		this.username = username;
+		this.password = password;
 	}
 	
 	public void setEmail(String email)
