@@ -13,7 +13,7 @@ public class Rating {
 
 	private void removeRating(RatingEnum rating)
 	{
-
+		this.rating = null;
 	}
 
 	public Integer getAverageRating()
