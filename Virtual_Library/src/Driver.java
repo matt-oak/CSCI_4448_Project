@@ -15,7 +15,7 @@ public class Driver
 		System.out.println("Do you have an account? (Y/N)");
 		String accountExist = input.nextLine();
 		
-		if (accountExist == "Y" || accountExist == "y")
+		if (accountExist.equals("Y") || accountExist.equals("y"))
 		{
 			System.out.println("Signing in..");
 		}
@@ -40,34 +40,15 @@ public class Driver
 		User user = new User(email, username, pass);
 		return user;
 	}
-	public static void searchBook(){
-		Connection c = null;
-		Statement stmt = null;
-		Scanner input = new Scanner(System.in);
-		System.out.println("Book Name:");
-		String book = input.nextLine();
-		try{
-			Class.forName("org.postgresql.Driver");
-			c = DriverManager.
-					getConnection("jdbc:postgresql://localhost:5432/library", "test", "pass");
-			c.setAutoCommit(false);
-			stmt = c.createStatement();
-	        ResultSet rs = stmt.executeQuery( "SELECT * FROM library WHERE \"Title\" = \'" + book + "\';");
-	        if (rs.next()){
-	        	String author = rs.getString("Author");
-		        System.out.println("Author: " + author);
-	        }
-		}
-		catch (Exception e){
-			System.err.println( e.getClass().getName()+": "+ e.getMessage() );
-		}
-	}
 	
-
 	public static void main(String[] args) 
 	{
 		initialize();
-		searchBook();
+		Collection userCollection = new Collection();
+		userCollection.searchBook();
+		userCollection.searchBook();
+		userCollection.searchBook();
+		userCollection.getCollection();
 	}
 
 }

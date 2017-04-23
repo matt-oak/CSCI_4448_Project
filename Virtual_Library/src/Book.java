@@ -1,20 +1,16 @@
 public class Book {
 	
 	private String title;
-	private String isbn;
 	private String author;
-	private String publisher; 
-	private Integer wordCount;
-
-	public Integer bookID; 
+	private String genre; 
+	private Integer pageCount;
 	
-	public Book(String title, String isbn, String author, String publisher, Integer wordCount)
+	public Book(String title, String author, String genre, Integer pageCount)
 	{
 		title = this.title;
-		isbn = this.isbn;
 		author = this.author;
-		publisher = this.publisher;
-		wordCount = this.wordCount;
+		genre = this.genre;
+		pageCount = this.pageCount;
 	}
 
 	public void setTitle(String title)
@@ -22,39 +18,25 @@ public class Book {
 		this.title = title;
 	}
 	
-	public void setISBN(String isbn)
-	{
-		this.isbn = isbn;
-	}
 
 	public void setAuthor(String author)
 	{
 		this.author = author;
 	}
 	
-	public void setPublisher(String publisher)
+	public void setGenre(String genre)
 	{
-		this.publisher = publisher;
+		this.genre = genre;
 	}
 
-	public void setWordCount(Integer wordCount)
+	public void setPageCount(Integer pageCount)
 	{
-		this.wordCount = wordCount;
-	}
-
-	public Integer getBookID()
-	{
-		return bookID;
+		this.pageCount = pageCount;
 	}
 	
 	public String getTitle()
 	{
 		return title;
-	}
-	
-	public String getISBN()
-	{
-		return isbn;
 	}
 
 	public String getAuthor()
@@ -62,14 +44,14 @@ public class Book {
 		return author;
 	}
 	
-	public String getPublisher()
+	public String getGenre()
 	{
-		return publisher;
+		return genre;
 	}
 	
-	public Integer getWordCount()
+	public Integer getPageCount()
 	{
-		return wordCount;
+		return pageCount;
 	}
 
 	public void addComment()
