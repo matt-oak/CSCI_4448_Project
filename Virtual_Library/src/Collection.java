@@ -15,24 +15,50 @@ public class Collection{
 	}
 	
 	public void getCollection(){
-		int i = 0;
-		for(i = 1; i < this.bookCollection.size() + 1; i++){
-			Book curBook = this.bookCollection.get(i - 1);
-			System.out.println(i + ": " + curBook.getTitle());
-		}
-		Scanner input = new Scanner(System.in);
-		System.out.println("View book attributes? (Y/N)");
-		String option = input.nextLine();
-		if (option.equals("Y") || option.equals("y")){
-			System.out.println("Book #:");
-			int bookNum = input.nextInt();
-			Book book = this.bookCollection.get(bookNum - 1);
-			System.out.println("\n-----------BOOK STATS-----------");
-			System.out.println("Author: " + book.getAuthor());
-			System.out.println("Genre: " + book.getGenre());
-			System.out.println("Pages: " + book.getPageCount());
+		boolean stopper = true;
+		while(stopper){
+			//Print out current library
+			System.out.println("\n-----------LIBRARY-----------");
+			int i = 0;
+			for(i = 1; i < this.bookCollection.size() + 1; i++){
+				Book curBook = this.bookCollection.get(i - 1);
+				System.out.println(i + ": " + curBook.getTitle());
+			}
 			System.out.println("--------------------------------\n");
-		}		
+		
+			Scanner input = new Scanner(System.in);
+			System.out.println("Book #: ");
+			int bookChoice = input.nextInt();
+			System.out.println("1. View book attributes");
+			System.out.println("2. Make comment");
+			System.out.println("3. View comment(s)");
+			System.out.println("4. Set as favorite");
+			System.out.println("5. Exit");
+			int option = input.nextInt();
+			Book book = this.bookCollection.get(bookChoice - 1);
+			if (option == 1){
+				System.out.println("\n-----------BOOK STATS-----------");
+				System.out.println("Author: " + book.getAuthor());
+				System.out.println("Genre: " + book.getGenre());
+				System.out.println("Pages: " + book.getPageCount());
+				System.out.println("--------------------------------\n");
+			}
+			else if (option == 2)
+			{
+				System.out.println("Comment: ");
+				Scanner commentInput = new Scanner(System.in);
+				String comment = commentInput.nextLine();
+				book.addComment(comment);
+			}
+			else if (option == 3)
+			{
+				System.out.println(book.getComments());
+			}
+			else if (option == 5)
+			{
+				stopper = false;
+			}
+		}
 	}
 	
 	public void searchBook(){
@@ -57,7 +83,7 @@ public class Collection{
 		        System.out.println("Add book to your library? (Y/N)");
 		        String response = input.nextLine();
 		        if (response.equals("Y") || response.equals("y")){
-		        	Book searchedBook = new Book(title, author, genre, pages);
+		        	Book searchedBook = new Book(title, author, genre, pages, null);
 		        	this.bookCollection.add(searchedBook);
 		        }
 		        else{

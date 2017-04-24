@@ -34,7 +34,6 @@ public class Driver
 		String email = input.nextLine();
 		System.out.println("Password:");
 		String pass = input.nextLine();
-		System.out.println(username + email + pass);
 		
 		//Create User object
 		User user = new User(email, username, pass, false);
@@ -43,7 +42,10 @@ public class Driver
 	
 	public static void main(String[] args) 
 	{
+		//User sign in
 		initialize();
+		
+		//Create/use user's collection of books
 		Collection userCollection = new Collection();
 		Scanner input = new Scanner(System.in);
 		boolean breaker = true;
@@ -60,7 +62,7 @@ public class Driver
 				userCollection.getCollection();
 			}
 			else if (option == 3){
-				breaker = false;
+				System.exit(0);
 			}
 			else{
 				System.out.println("Invalid option");
