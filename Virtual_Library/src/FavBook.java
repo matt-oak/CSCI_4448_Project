@@ -1,4 +1,4 @@
-public class FavBook {
+public class FavBook extends Book{
 
 	private Boolean isFav;
 	
@@ -16,4 +16,5 @@ public class FavBook {
 	{
 		
 	}
+	
 }
