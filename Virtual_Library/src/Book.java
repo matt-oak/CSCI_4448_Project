@@ -7,10 +7,10 @@ public class Book {
 	
 	public Book(String title, String author, String genre, Integer pageCount)
 	{
-		title = this.title;
-		author = this.author;
-		genre = this.genre;
-		pageCount = this.pageCount;
+		this.title = title;
+		this.author = author;
+		this.genre = genre;
+		this.pageCount = pageCount;
 	}
 
 	public void setTitle(String title)

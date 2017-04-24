@@ -17,7 +17,6 @@ public class Collection{
 	public void getCollection(){
 		for(int i = 0; i < this.bookCollection.size(); i++){
 			Book curBook = this.bookCollection.get(i);
-			System.out.println(curBook);
 			System.out.println(curBook.getTitle());
 		}
 	}
@@ -44,10 +43,8 @@ public class Collection{
 		        System.out.println("Add book to your library? (Y/N)");
 		        String response = input.nextLine();
 		        if (response.equals("Y") || response.equals("y")){
-		        	System.out.println(author);
-		        	Book newBook = new Book(title, author, genre, pages);
-		        	this.bookCollection.add(newBook);
-		        	System.out.println(newBook.getAuthor());
+		        	Book searchedBook = new Book(title, author, genre, pages);
+		        	this.bookCollection.add(searchedBook);
 		        }
 		        else{
 		        	System.out.println("Going back...");

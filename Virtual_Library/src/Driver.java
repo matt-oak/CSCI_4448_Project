@@ -37,7 +37,7 @@ public class Driver
 		System.out.println(username + email + pass);
 		
 		//Create User object
-		User user = new User(email, username, pass);
+		User user = new User(email, username, pass, false);
 		return user;
 	}
 	
@@ -45,10 +45,27 @@ public class Driver
 	{
 		initialize();
 		Collection userCollection = new Collection();
-		userCollection.searchBook();
-		userCollection.searchBook();
-		userCollection.searchBook();
-		userCollection.getCollection();
+		Scanner input = new Scanner(System.in);
+		boolean breaker = true;
+		while (breaker){
+			System.out.println("What would you like to  do?");
+			System.out.println("1. Search for Book");
+			System.out.println("2. View current library");
+			System.out.println("3. Quit");
+			int option = input.nextInt();
+			if (option == 1){
+				userCollection.searchBook();
+			}
+			else if (option == 2){
+				userCollection.getCollection();
+			}
+			else if (option == 3){
+				breaker = false;
+			}
+			else{
+				System.out.println("Invalid option");
+			}
+		}
 	}
 
 }
