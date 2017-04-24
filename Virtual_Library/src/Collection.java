@@ -15,10 +15,24 @@ public class Collection{
 	}
 	
 	public void getCollection(){
-		for(int i = 0; i < this.bookCollection.size(); i++){
-			Book curBook = this.bookCollection.get(i);
-			System.out.println(curBook.getTitle());
+		int i = 0;
+		for(i = 1; i < this.bookCollection.size() + 1; i++){
+			Book curBook = this.bookCollection.get(i - 1);
+			System.out.println(i + ": " + curBook.getTitle());
 		}
+		Scanner input = new Scanner(System.in);
+		System.out.println("View book attributes? (Y/N)");
+		String option = input.nextLine();
+		if (option.equals("Y") || option.equals("y")){
+			System.out.println("Book #:");
+			int bookNum = input.nextInt();
+			Book book = this.bookCollection.get(bookNum - 1);
+			System.out.println("\n-----------BOOK STATS-----------");
+			System.out.println("Author: " + book.getAuthor());
+			System.out.println("Genre: " + book.getGenre());
+			System.out.println("Pages: " + book.getPageCount());
+			System.out.println("--------------------------------\n");
+		}		
 	}
 	
 	public void searchBook(){
@@ -50,10 +64,17 @@ public class Collection{
 		        	System.out.println("Going back...");
 		        }
 		    }
+		    else{
+		    	System.out.println("Book does not exist");
+		    }
 		}
 		catch (Exception e){
 			System.err.println( e.getClass().getName()+": "+ e.getMessage() );
 		}
+	}
+	
+	public void selectBook(){
+		
 	}
 	
 }
