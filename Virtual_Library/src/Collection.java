@@ -18,7 +18,7 @@ public class Collection{
 		boolean stopper = true;
 		while(stopper){
 			//Print out current library
-			System.out.println("\n-----------LIBRARY-----------");
+			System.out.println("\n-----------MY LIBRARY-----------");
 			int i = 0;
 			for(i = 1; i < this.bookCollection.size() + 1; i++){
 				Book curBook = this.bookCollection.get(i - 1);
@@ -27,7 +27,7 @@ public class Collection{
 			System.out.println("--------------------------------\n");
 		
 			Scanner input = new Scanner(System.in);
-			System.out.println("Book #: ");
+			System.out.println("Select Book from your library: ");
 			int bookChoice = input.nextInt();
 			System.out.println("1. View book attributes");
 			System.out.println("2. Make comment");
@@ -37,7 +37,8 @@ public class Collection{
 			int option = input.nextInt();
 			Book book = this.bookCollection.get(bookChoice - 1);
 			if (option == 1){
-				System.out.println("\n-----------BOOK STATS-----------");
+				System.out.println("\n-----------BOOK INFO-----------");
+				System.out.println("Title: " + book.getTitle());
 				System.out.println("Author: " + book.getAuthor());
 				System.out.println("Genre: " + book.getGenre());
 				System.out.println("Pages: " + book.getPageCount());
@@ -52,7 +53,10 @@ public class Collection{
 			}
 			else if (option == 3)
 			{
+				
+				System.out.println("Comments about the book:\n");
 				System.out.println(book.getComments());
+				System.out.println("\n");
 			}
 			else if (option == 5)
 			{
@@ -70,7 +74,7 @@ public class Collection{
 		try{
 			Class.forName("org.postgresql.Driver");
 			c = DriverManager.
-					getConnection("jdbc:postgresql://localhost:5432/library", "test", "pass");
+					getConnection("jdbc:postgresql://localhost:5432/library", "postgres", "2511");
 			c.setAutoCommit(false);
 			stmt = c.createStatement();
 		    ResultSet rs = stmt.executeQuery( "SELECT * FROM library WHERE \"Title\" = \'" + book + "\';");
@@ -79,11 +83,15 @@ public class Collection{
 		        String author = rs.getString("Author");
 		        String genre = rs.getString("Genre");
 		        Integer pages = rs.getInt("Height");
-		    
+		        
+		        System.out.println("Book found:/n");
+		        System.out.println("Title"+title);
+		        System.out.println("Author:"+author+"\n");
+		        
 		        System.out.println("Add book to your library? (Y/N)");
 		        String response = input.nextLine();
 		        if (response.equals("Y") || response.equals("y")){
-		        	Book searchedBook = new Book(title, author, genre, pages, null);
+		        	Book searchedBook = new Book(title, author, genre, pages, null, null);
 		        	this.bookCollection.add(searchedBook);
 		        }
 		        else{

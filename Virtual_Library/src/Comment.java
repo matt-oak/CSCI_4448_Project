@@ -10,11 +10,12 @@ public class Comment {
 
 	public void removeComment(Comment comment)
 	{
-
+		this.comment = null;
 	}
 
 	public void save()
 	{
+		/// This should be in the Book class
 		
 	}
 }

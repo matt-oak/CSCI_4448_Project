@@ -1,6 +1,6 @@
 public class Admin extends User{
 
-	private String adminId;
+	private Integer adminId;
 	
 	
 	public Admin(String email, String username, String password, Boolean isAdmin)
@@ -15,6 +15,7 @@ public class Admin extends User{
 	
 	public void deleteUser(User user)
 	{
+		/// This is not implemented yet
 		
 	}
 	

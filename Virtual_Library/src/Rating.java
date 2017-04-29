@@ -1,10 +1,12 @@
 public class Rating {
 
 	public enum RatingEnum {
-		VERY BAD, BAD, OK, GOOD, VERY GOOD;
+		VERYBAD, BAD, OK, GOOD, VERYGOOD;
 	}
 
-	RatingEnum rating;
+	private RatingEnum rating;
+	public Integer ratingID;
+	
 	
 	public Rating(RatingEnum rating)
 	{
@@ -18,11 +20,13 @@ public class Rating {
 
 	public Integer getAverageRating()
 	{
-
+		// This function will be moved to the Book class
+		
 	}
 
 	public void save()
 	{
+		// This function will be moved to the Book class
 		
 	}
 }
