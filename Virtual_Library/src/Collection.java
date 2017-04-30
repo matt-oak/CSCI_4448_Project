@@ -58,7 +58,7 @@ public class Collection{
 			{
 				
 				System.out.println("Comments about the book:\n");
-				System.out.println(book.getComments());
+				book.getComments();
 				System.out.println("\n");
 			}
 			else if (option == 4)
