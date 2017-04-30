@@ -101,7 +101,7 @@ public class Collection{
 		try{
 			Class.forName("org.postgresql.Driver");
 			c = DriverManager.
-					getConnection("jdbc:postgresql://localhost:5432/library", "test", "pass");
+					getConnection("jdbc:postgresql://localhost:5432/library", "postgres", "!Password1");
 			c.setAutoCommit(false);
 			stmt = c.createStatement();
 		    ResultSet rs = stmt.executeQuery( "SELECT * FROM library WHERE \"Title\" = \'" + book + "\';");
@@ -110,6 +110,7 @@ public class Collection{
 		    	String title = rs.getString("Title");
 		        String author = rs.getString("Author");
 		        String genre = rs.getString("Genre");
+		        String publisher = rs.getString("Publisher");
 		        Integer pages = rs.getInt("Height");
 		        
 		        System.out.println("\nBook found:\n");
@@ -119,7 +120,7 @@ public class Collection{
 		        System.out.println("Add book to your library? (Y/N)");
 		        String response = input.nextLine();
 		        if (response.equals("Y") || response.equals("y")){
-		        	addBook(bookID, title, author, genre, pages);
+		        	addBook(bookID, title, author, genre, publisher, pages);
 		        }
 		        else{
 		        	System.out.println("Going back...");
@@ -141,8 +142,8 @@ public class Collection{
 		return bookChoice;
 	}
 	
-	public void addBook(int bookID, String title, String author, String genre, int pages){
-		Book searchedBook = new Book(bookID, title, author, genre, pages, null, null, false);
+	public void addBook(int bookID, String title, String author, String genre, String publisher, int pages){
+		Book searchedBook = new Book(bookID, title, author, genre, publisher, pages, null, null, false);
 		this.bookCollection.add(searchedBook);
 	}
 	
