@@ -7,18 +7,20 @@ public class Book {
 	private String title;
 	private String author;
 	private String genre; 
+	private String publisher;
 	private Integer pageCount;
 	private List<String> comments;
 	private List<Integer> ratings;
 	private int averageRating;
 	private boolean isFav;
 	
-	public Book(int bookID, String title, String author, String genre, Integer pageCount, List<String> comments, List<Integer> ratings, boolean isFav)
+	public Book(int bookID, String title, String author, String genre, String publisher, Integer pageCount, List<String> comments, List<Integer> ratings, boolean isFav)
 	{
 		this.bookID = bookID;
 		this.title = title;
 		this.author = author;
 		this.genre = genre;
+		this.publisher = publisher;
 		this.pageCount = pageCount;
 		this.comments = new ArrayList<String>();
 		this.ratings = new ArrayList<Integer>();
@@ -51,7 +53,12 @@ public class Book {
 	{
 		this.genre = genre;
 	}
-
+	
+	public void setPublisher(String publisher)
+	{
+		this.publisher = publisher;
+	}
+	
 	public void setPageCount(Integer pageCount)
 	{
 		this.pageCount = pageCount;
@@ -80,6 +87,11 @@ public class Book {
 	public String getGenre()
 	{
 		return genre;
+	}
+	
+	public String getPublisher()
+	{
+		return publisher;
 	}
 	
 	public Integer getPageCount()
