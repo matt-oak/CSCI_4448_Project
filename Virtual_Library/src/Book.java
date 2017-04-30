@@ -108,11 +108,6 @@ public class Book {
 		return sum/i;
 	}
 
-	public void addFavorite()
-	{
-		
-	}
-
 	public void back()
 	{
 
