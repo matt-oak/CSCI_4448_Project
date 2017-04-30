@@ -10,8 +10,9 @@ public class Book {
 	private List<String> comments;
 	private List<Integer> ratings;
 	private int averageRating;
+	private boolean isFav;
 	
-	public Book(String title, String author, String genre, Integer pageCount, List<String> comments, List<Integer> ratings)
+	public Book(String title, String author, String genre, Integer pageCount, List<String> comments, List<Integer> ratings, boolean isFav)
 	{
 		this.title = title;
 		this.author = author;
@@ -20,6 +21,7 @@ public class Book {
 		this.comments = new ArrayList<String>();
 		this.ratings = new ArrayList<Integer>();
 		this.averageRating = 0;
+		this.isFav = isFav;
 	}
 
 	public void setTitle(String title)
@@ -48,6 +50,11 @@ public class Book {
 		this.pageCount = pageCount;
 	}
 	
+	public void setIsFav(boolean isFav)
+	{
+		this.isFav = isFav;
+	}
+	
 	public String getTitle()
 	{
 		return title;
@@ -71,6 +78,11 @@ public class Book {
 	public String getComments()
 	{
 		return comments.get(0);
+	}
+	
+	public boolean getIsFav()
+	{
+		return isFav;
 	}
 
 	public void addComment(String comment)
