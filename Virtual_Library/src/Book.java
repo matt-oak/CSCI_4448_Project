@@ -101,9 +101,14 @@ public class Book {
 	
 	public void getComments()
 	{
-		private i;
-		for (i = 0; i < comments.size() ; i++){
-			System.out.println("Commment number " + (i+1) + ": "+ comment.get(i));
+		int i;
+		if(comments.size() == 0){
+			System.out.println("No comments exist for this book");
+		}
+		else{
+			for (i = 0; i < comments.size() ; i++){
+				System.out.println(comments.get(i));
+			}
 		}
 	}
 	
