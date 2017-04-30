@@ -11,13 +11,5 @@ public class Admin extends User{
 		this.isAdmin = isAdmin;
 		this.adminId = adminId;
 		
-	}
-	
-	public void deleteUser(User user)
-	{
-		/// This is not implemented yet
-		
-	}
-	
-	
+	}	
 }
