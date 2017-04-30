@@ -99,9 +99,12 @@ public class Book {
 		return pageCount;
 	}
 	
-	public String getComments()
+	public void getComments()
 	{
-		return comments.get(0);
+		private i;
+		for (i = 0; i < comments.size() ; i++){
+			System.out.println("Commment number " + (i+1) + ": "+ comment.get(i));
+		}
 	}
 	
 	public boolean getIsFav()
