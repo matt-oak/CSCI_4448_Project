@@ -34,9 +34,14 @@ public class Driver
 		String email = input.nextLine();
 		System.out.println("Password:");
 		String pass = input.nextLine();
-		
-		//Create User object
-		User user = new User(email, username, pass, false);
+		System.out.println("Admin? (Y/N)");
+		String admin = input.nextLine();
+		boolean isAdmin = false;
+		if (admin.equals("Y") || admin.equals("y"))
+		{
+			isAdmin = true;
+		}
+		User user = new User(email, username, pass, isAdmin);
 		return user;
 	}
 	
@@ -69,5 +74,4 @@ public class Driver
 			}
 		}
 	}
-
 }
