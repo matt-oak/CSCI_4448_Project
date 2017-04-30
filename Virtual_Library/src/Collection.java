@@ -44,6 +44,7 @@ public class Collection{
 				System.out.println("Author: " + book.getAuthor());
 				System.out.println("Genre: " + book.getGenre());
 				System.out.println("Pages: " + book.getPageCount());
+				System.out.println("Publisher: " + book.getPublisher());
 				System.out.println("--------------------------------\n");
 			}
 			else if (option == 2)
@@ -101,7 +102,7 @@ public class Collection{
 		try{
 			Class.forName("org.postgresql.Driver");
 			c = DriverManager.
-					getConnection("jdbc:postgresql://localhost:5432/library", "postgres", "!Password1");
+					getConnection("jdbc:postgresql://localhost:5432/library", "postgres", "2511");
 			c.setAutoCommit(false);
 			stmt = c.createStatement();
 		    ResultSet rs = stmt.executeQuery( "SELECT * FROM library WHERE \"Title\" = \'" + book + "\';");

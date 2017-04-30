@@ -130,6 +130,7 @@ public class Book {
 			sum += ratings.get(i);
 		}
 		return sum/i;
+		
 	}
 
 	public void back()
