@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Scanner;
 
-public class Library {
+private class Library {
 
 	public List[Books] bookCollection; 
 	
