@@ -26,9 +26,7 @@ public class Collection{
 			}
 			System.out.println("--------------------------------\n");
 		
-			Scanner input = new Scanner(System.in);
-			System.out.println("Select Book from your library: ");
-			int bookChoice = input.nextInt();
+			int bookChoice = selectBook();
 			System.out.println("1. View book attributes");
 			System.out.println("2. Make comment");
 			System.out.println("3. View comment(s)");
@@ -36,7 +34,8 @@ public class Collection{
 			System.out.println("5. View average rating");
 			System.out.println("6. Set or remove as favorite");
 			System.out.println("7. Exit");
-			int option = input.nextInt();
+			Scanner opChoice = new Scanner(System.in);
+			int option = opChoice.nextInt();
 			Book book = this.bookCollection.get(bookChoice - 1);
 			if (option == 1){
 				System.out.println("\n-----------BOOK INFO-----------");
@@ -101,7 +100,7 @@ public class Collection{
 		try{
 			Class.forName("org.postgresql.Driver");
 			c = DriverManager.
-					getConnection("jdbc:postgresql://localhost:5432/library", "postgres", "!Password1");
+					getConnection("jdbc:postgresql://localhost:5432/library", "test", "pass");
 			c.setAutoCommit(false);
 			stmt = c.createStatement();
 		    ResultSet rs = stmt.executeQuery( "SELECT * FROM library WHERE \"Title\" = \'" + book + "\';");
@@ -118,8 +117,7 @@ public class Collection{
 		        System.out.println("Add book to your library? (Y/N)");
 		        String response = input.nextLine();
 		        if (response.equals("Y") || response.equals("y")){
-		        	Book searchedBook = new Book(title, author, genre, pages, null, null, false);
-		        	this.bookCollection.add(searchedBook);
+		        	addBook(title, author, genre, pages);
 		        }
 		        else{
 		        	System.out.println("Going back...");
@@ -134,8 +132,16 @@ public class Collection{
 		}
 	}
 	
-	public void selectBook(){
-		
+	public int selectBook(){
+		Scanner input = new Scanner(System.in);
+		System.out.println("Select Book from your library: ");
+		int bookChoice = input.nextInt();
+		return bookChoice;
+	}
+	
+	public void addBook(String title, String author, String genre, int pages){
+		Book searchedBook = new Book(title, author, genre, pages, null, null, false);
+		this.bookCollection.add(searchedBook);
 	}
 	
 }
