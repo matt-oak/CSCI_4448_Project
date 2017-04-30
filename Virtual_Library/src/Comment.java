@@ -10,7 +10,7 @@ public class Comment {
 
 	public void removeComment(Comment comment)
 	{
-		this.comment = null;
+		comment = null;
 	}
 
 	public void save()

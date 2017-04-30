@@ -32,8 +32,10 @@ public class Collection{
 			System.out.println("1. View book attributes");
 			System.out.println("2. Make comment");
 			System.out.println("3. View comment(s)");
-			System.out.println("4. Set as favorite");
-			System.out.println("5. Exit");
+			System.out.println("4. Rate");
+			System.out.println("5. View average rating");
+			System.out.println("6. Set as favorite");
+			System.out.println("7. Exit");
 			int option = input.nextInt();
 			Book book = this.bookCollection.get(bookChoice - 1);
 			if (option == 1){
@@ -58,7 +60,18 @@ public class Collection{
 				System.out.println(book.getComments());
 				System.out.println("\n");
 			}
+			else if (option == 4)
+			{
+				System.out.println("Rating (1-10): ");
+				Scanner ratingInput = new Scanner(System.in);
+				int rating = ratingInput.nextInt();
+				book.addRating(rating);
+			}
 			else if (option == 5)
+			{
+				System.out.println("Average rating: " + book.avgRating());
+			}
+			else if (option == 7)
 			{
 				stopper = false;
 			}
@@ -74,7 +87,7 @@ public class Collection{
 		try{
 			Class.forName("org.postgresql.Driver");
 			c = DriverManager.
-					getConnection("jdbc:postgresql://localhost:5432/library", "postgres", "2511");
+					getConnection("jdbc:postgresql://localhost:5432/library", "test", "pass");
 			c.setAutoCommit(false);
 			stmt = c.createStatement();
 		    ResultSet rs = stmt.executeQuery( "SELECT * FROM library WHERE \"Title\" = \'" + book + "\';");
@@ -84,9 +97,9 @@ public class Collection{
 		        String genre = rs.getString("Genre");
 		        Integer pages = rs.getInt("Height");
 		        
-		        System.out.println("Book found:/n");
-		        System.out.println("Title"+title);
-		        System.out.println("Author:"+author+"\n");
+		        System.out.println("\nBook found:\n");
+		        System.out.println("Title: "+ title + "\n");
+		        System.out.println("Author: "+ author + "\n");
 		        
 		        System.out.println("Add book to your library? (Y/N)");
 		        String response = input.nextLine();

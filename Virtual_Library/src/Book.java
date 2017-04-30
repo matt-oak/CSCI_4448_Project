@@ -8,16 +8,18 @@ public class Book {
 	private String genre; 
 	private Integer pageCount;
 	private List<String> comments;
-	private List<String> ratings;
+	private List<Integer> ratings;
+	private int averageRating;
 	
-	public Book(String title, String author, String genre, Integer pageCount, List<String> comments, List<String> ratings)
+	public Book(String title, String author, String genre, Integer pageCount, List<String> comments, List<Integer> ratings)
 	{
 		this.title = title;
 		this.author = author;
 		this.genre = genre;
 		this.pageCount = pageCount;
 		this.comments = new ArrayList<String>();
-		this.ratings = new ArrayList<String>();
+		this.ratings = new ArrayList<Integer>();
+		this.averageRating = 0;
 	}
 
 	public void setTitle(String title)
@@ -39,11 +41,6 @@ public class Book {
 	public void setGenre(String genre)
 	{
 		this.genre = genre;
-	}
-	
-	public void setRatings(List<String> ratings)
-	{
-		this.ratings = ratings;
 	}
 
 	public void setPageCount(Integer pageCount)
@@ -75,11 +72,6 @@ public class Book {
 	{
 		return comments.get(0);
 	}
-	
-	public String getRatings()
-	{
-		return ratings.get(0);
-	}
 
 	public void addComment(String comment)
 	{
@@ -88,12 +80,20 @@ public class Book {
 		/// This should be a list of Comment objects eventually
 		
 	}
-	public void addRating(String rating)
+	public void addRating(int rating)
 	{
-		List<String> ratings = this.ratings;
-		ratings.add(rating);
-		/// This should be a list of Rating objects eventually
-		
+		List<Integer> ratings = this.ratings;
+		ratings.add(rating);	
+	}
+	public float avgRating()
+	{
+		List<Integer> ratings = this.ratings;
+		int i;
+		float sum = 0;
+		for(i = 0; i < ratings.size(); i++){
+			sum += ratings.get(i);
+		}
+		return sum/i;
 	}
 
 	public void addFavorite()
