@@ -39,6 +39,7 @@ public class Collection{
 			Book book = this.bookCollection.get(bookChoice - 1);
 			if (option == 1){
 				System.out.println("\n-----------BOOK INFO-----------");
+				System.out.println("Book ID: " + book.getBookID());
 				System.out.println("Title: " + book.getTitle());
 				System.out.println("Author: " + book.getAuthor());
 				System.out.println("Genre: " + book.getGenre());
@@ -105,6 +106,7 @@ public class Collection{
 			stmt = c.createStatement();
 		    ResultSet rs = stmt.executeQuery( "SELECT * FROM library WHERE \"Title\" = \'" + book + "\';");
 		    if (rs.next()){
+		    	int bookID = rs.getInt("index");
 		    	String title = rs.getString("Title");
 		        String author = rs.getString("Author");
 		        String genre = rs.getString("Genre");
@@ -117,7 +119,7 @@ public class Collection{
 		        System.out.println("Add book to your library? (Y/N)");
 		        String response = input.nextLine();
 		        if (response.equals("Y") || response.equals("y")){
-		        	addBook(title, author, genre, pages);
+		        	addBook(bookID, title, author, genre, pages);
 		        }
 		        else{
 		        	System.out.println("Going back...");
@@ -139,8 +141,8 @@ public class Collection{
 		return bookChoice;
 	}
 	
-	public void addBook(String title, String author, String genre, int pages){
-		Book searchedBook = new Book(title, author, genre, pages, null, null, false);
+	public void addBook(int bookID, String title, String author, String genre, int pages){
+		Book searchedBook = new Book(bookID, title, author, genre, pages, null, null, false);
 		this.bookCollection.add(searchedBook);
 	}
 	

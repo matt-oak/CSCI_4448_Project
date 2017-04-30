@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 public class Book {
 	
+	private int bookID;
 	private String title;
 	private String author;
 	private String genre; 
@@ -12,8 +13,9 @@ public class Book {
 	private int averageRating;
 	private boolean isFav;
 	
-	public Book(String title, String author, String genre, Integer pageCount, List<String> comments, List<Integer> ratings, boolean isFav)
+	public Book(int bookID, String title, String author, String genre, Integer pageCount, List<String> comments, List<Integer> ratings, boolean isFav)
 	{
+		this.bookID = bookID;
 		this.title = title;
 		this.author = author;
 		this.genre = genre;
@@ -22,6 +24,11 @@ public class Book {
 		this.ratings = new ArrayList<Integer>();
 		this.averageRating = 0;
 		this.isFav = isFav;
+	}
+	
+	public void setBookID(int bookID)
+	{
+		this.bookID = bookID;
 	}
 
 	public void setTitle(String title)
@@ -53,6 +60,11 @@ public class Book {
 	public void setIsFav(boolean isFav)
 	{
 		this.isFav = isFav;
+	}
+	
+	public int getBookID()
+	{
+		return bookID;
 	}
 	
 	public String getTitle()
