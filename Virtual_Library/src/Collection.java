@@ -34,7 +34,7 @@ public class Collection{
 			System.out.println("3. View comment(s)");
 			System.out.println("4. Rate");
 			System.out.println("5. View average rating");
-			System.out.println("6. Set as favorite");
+			System.out.println("6. Set or remove as favorite");
 			System.out.println("7. Exit");
 			int option = input.nextInt();
 			Book book = this.bookCollection.get(bookChoice - 1);
@@ -71,6 +71,20 @@ public class Collection{
 			{
 				System.out.println("Average rating: " + book.avgRating());
 			}
+			else if (option == 6)
+			{
+				boolean favorite = book.getIsFav();
+				if(favorite)
+				{
+					book.setIsFav(false);
+					System.out.println("Removed book from favorites");
+				}
+				else
+				{
+					book.setIsFav(true);
+					System.out.println("Added book to favorites");
+				}
+			}
 			else if (option == 7)
 			{
 				stopper = false;
@@ -87,7 +101,7 @@ public class Collection{
 		try{
 			Class.forName("org.postgresql.Driver");
 			c = DriverManager.
-					getConnection("jdbc:postgresql://localhost:5432/library", "test", "pass");
+					getConnection("jdbc:postgresql://localhost:5432/library", "postgres", "!Password1");
 			c.setAutoCommit(false);
 			stmt = c.createStatement();
 		    ResultSet rs = stmt.executeQuery( "SELECT * FROM library WHERE \"Title\" = \'" + book + "\';");
@@ -104,7 +118,7 @@ public class Collection{
 		        System.out.println("Add book to your library? (Y/N)");
 		        String response = input.nextLine();
 		        if (response.equals("Y") || response.equals("y")){
-		        	Book searchedBook = new Book(title, author, genre, pages, null, null);
+		        	Book searchedBook = new Book(title, author, genre, pages, null, null, false);
 		        	this.bookCollection.add(searchedBook);
 		        }
 		        else{
