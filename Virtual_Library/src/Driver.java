@@ -52,8 +52,11 @@ public class Driver
 		
 		//Create/use user's collection of books
 		Collection userCollection = new Collection();
-		Library lib = new Library();
-		lib.populateLibrary();
+		
+		/// This code is broken
+		///Library lib = new Library();
+		///lib.populateLibrary();
+		
 		Scanner input = new Scanner(System.in);
 		boolean breaker = true;
 		while (breaker){
@@ -70,7 +73,8 @@ public class Driver
 				userCollection.getCollection();
 			}
 			else if (option == 3){
-				System.out.println("Total Books in Database: " + lib.getTotalNumBooks());
+				///System.out.println("Total Books in Database: " + lib.getTotalNumBooks());
+				
 			}
 			else if (option == 4){
 				System.exit(0);
